@@ -1,30 +1,32 @@
 
 # My proyect CRUD -> Generar, actualizar, eliminar, buscar 
-clients = ['andres', 'alexander', 'chaparro']
+clients = {'1':'andres','2':'alexander','3':'chaparro'}
 
 
 def create_cliente(client):
     global clients
     if client_name not in clients:  # what the client not found
-        clients.append(client_name)
+        key = sum(map(len, clients.keys()))
+        clients[str(key+1)] = client_name
     else:
         print("clients already exist {}".format(client_name))
 
 
 def read_client():
     global clients
-    if client_name in clients:
+    name = clients.values()
+    if client_name in name:
         print("Find user")
-        for idx, client in enumerate(clients,1):
-            print('{}:{}'.format(idx, client))
     else:
         print("not find user")
 
 def update_client(client_name, new_name):
     global clients
-    if client_name in clients:
-        index = clients.index(client_name)
-        clients[index] = new_name
+    client = clients.values()
+    if client_name in client:
+        list_dicc = list(clients.values())
+        index = list_dicc.index(client_name)
+        clients[str(index+1)] = new_name
         print(f"Updated {client_name} to {new_name}")
     else:
         print("Client not found")
@@ -32,9 +34,12 @@ def update_client(client_name, new_name):
 
 def delete_client():
     global clients
-    if client_name in clients:
-        # Remove the client name and the trailing comma
-        clients.remove(client_name)
+    client = clients.values()
+    if client_name in client:
+        list_dicc = list(clients.values())
+        index = list_dicc.index(client_name)
+        del(clients[str(index+1)])
+      
         print(f"Deleted {client_name}")
     else:
         print("Client not found")
