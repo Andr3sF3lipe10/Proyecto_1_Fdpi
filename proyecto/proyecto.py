@@ -1,8 +1,3 @@
-
-# My proyect CRUD -> Generar, actualizar, eliminar, buscar 
-clients = {'1':'andres','2':'alexander','3':'chaparro'}
-
-
 def create_cliente(client):
     global clients
     if client_name not in clients:  # what the client not found
@@ -19,6 +14,7 @@ def read_client():
         print("Find user")
     else:
         print("not find user")
+
 
 def update_client(client_name, new_name):
     global clients
@@ -44,6 +40,7 @@ def delete_client():
     else:
         print("Client not found")
 
+
 def _print_welcome():
     print("WELCOME UNIVERSIDAD DEL VALLE -TULUÁ")
     print('*' * 90)
@@ -64,10 +61,9 @@ def get_list_client_names():
 
 
 if __name__ == '__main__':
+    clients = {'1':'andres','2':'alexander','3':'chaparro'}
     _print_welcome()
-    # poner en mayuscula (.upper())
     option = input("type option desired client: ").upper()
-
     if option == 'C':
         client_name = get_client_name()
         create_cliente(client_name)
